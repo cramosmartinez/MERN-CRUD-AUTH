@@ -1,7 +1,11 @@
-import { Mongoose } from "mongoose";
+import mongoose from "mongoose";
 
 export const connect = async () => {
   try {
-    await Mongoose.connect("mongodb://localhost/merndb");
-  } catch (error) {}
+    await mongoose.connect("mongodb://localhost/merndb");
+    console.log(">>> DB is connected");
+  } catch (error) {
+    console.log("Something went wrong!");
+    console.log(error);
+  }
 };
