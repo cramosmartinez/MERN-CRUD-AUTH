@@ -1,2 +1,16 @@
-export const register = async (req, res) => res.send("Register");
-export const login = async (req, res) => res.send("Login");
+import User from "../models/user.model.js";
+
+export const register = async (req, res) => {
+  const { username, email, password } = req.body;
+  try {
+    const newUser = new User({ username, email, password });
+    await newUser.save();
+  } catch (error) {
+    return res.status(400).json({ message: "Error registering user" });
+  }
+
+  res.send("registrado!");
+};
+export const login = async (req, res) => {
+  res.send("Login");
+};
